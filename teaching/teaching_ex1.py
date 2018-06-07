@@ -18,10 +18,17 @@ def get_definition(word):
         if question.lower() == 'y':
             return word_dict[close_word]
         else:
-            return ""
+            return "We did not understand your entry"
     else:
         return "Word is not in dictionary!"
 
 
 word = input("What word do you want to look up?")
-print(get_definition(word))
+
+output = get_definition(word)
+
+if type(output) == list:
+    for item in output:
+        print(item)
+else:
+    print(output)
