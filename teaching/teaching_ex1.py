@@ -12,6 +12,8 @@ def get_definition(word):
     word = word.lower()
     if word in word_dict:
         return word_dict[word]
+    elif word.title() in word_dict:
+        return word_dict[word.title()] 
     elif len(get_close_matches(word, word_dict.keys())) > 0:
         close_word = get_close_matches(word, word_dict.keys())[0]
         question = input("Did you mean %s instead? Enter a Y (for Yes) or an N (for No) " % close_word)
@@ -21,7 +23,6 @@ def get_definition(word):
             return "We did not understand your entry"
     else:
         return "Word is not in dictionary!"
-
 
 word = input("What word do you want to look up?")
 
